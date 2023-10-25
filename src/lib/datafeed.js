@@ -4,7 +4,7 @@ const WebSocket = require('ws');
 const EventEmitter = require('event-emitter');
 const EventAllOff = require('event-emitter/all-off');
 
-const loop = () => {};
+const loop = () => {}
 const generateId = () => '_e_' + Date.now() + (Math.random() * 365).toString(16).slice(4,14) + 'kc';
 const getTopicPrefix = topic => topic.split(':')[0];
 // const log = (...args) => {
@@ -96,6 +96,7 @@ class Datafeed {
     EventAllOff(this.emitter);
 
     const config = await this._getBulletToken();
+
     if (!config) {
       log('getPubToken config invalid');
 
@@ -106,8 +107,8 @@ class Datafeed {
       }, 3000);
       return;
     }
-    // log('getPubToken config: ', config);
-    log('getPubToken config');
+     log('getPubToken config: ', config);
+    //log('getPubToken config');
 
     const connectId = generateId();
     log('generate connectId: ', connectId);
@@ -304,6 +305,8 @@ class Datafeed {
     if (this._maxId > 1e8) {
       this._maxId = 0;
     }
+
+    log('instance url: ', url)
     const client = new WebSocket(url, {
       handshakeTimeout: 30000,
     });

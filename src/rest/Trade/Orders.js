@@ -441,9 +441,9 @@ exports.getSingleActiveOrderByClientOid = async function getSingleActiveOrderByC
  * - {String} remark Order placement remarks, length cannot exceed 20 characters (ASCII) in length
  * @return {Object} { code, success, data }
  */
-exports.placeHfOrder = async function placeHfOrder({clientOid,symbol,type,side,stp,tags,remark}) {
+exports.placeHfOrder = async function placeHfOrder({clientOid,symbol,type,side,stp,tags,remark,size,funds,price}) {
   return await Http().POST('/api/v1/hf/orders',{
-    clientOid,symbol,type,side,stp,tags,remark
+    clientOid,symbol,type,side,stp,tags,remark,size,funds,price
   });
 }
 
